@@ -1,2 +1,2 @@
 #!/bin/bash
-cut -c1 | tr -d '\n'; echo
+while read l; do echo "$l" | cut -c1; done | tr -d '\n'
