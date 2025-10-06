@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+#this script prinds best school 10 times using until
+_=1
+until ["$_" -gt 10]; do
+echo "Best School"
+((_++))
+done
