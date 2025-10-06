@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+#script prints hi on the 9th iteration of Best school
+_=1
+while ["$_" -le 10]; do
+ if ["$_" -eq 9]; do
+   echo "Best school"
+   echo "Hi"
+ else 
+   echo "Best school"
+ fi
+((_++))
+done
