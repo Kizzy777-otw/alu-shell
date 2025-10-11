@@ -1,15 +1,18 @@
 #!/usr/bin/env bash
-# This script displays numbers from 1 to 100 with Fizz, Buzz, and FizzBuzz substitutions
+# This script prints numbers from 1 to 100 with FizzBuzz rules
 
-for _ in {1..100}; do
-    if [ $(( _ % 15 )) -eq 0 ]; then
-        echo "FizzBuzz"
-    elif [ $(( _ % 3 )) -eq 0 ]; then
-        echo "Fizz"
-    elif [ $(( _ % 5 )) -eq 0 ]; then
-        echo "Buzz"
-    else
-        echo "$_"
-    fi
+count=1
+while [ $count -le 100 ]
+do
+  if [ $((count % 15)) -eq 0 ]; then
+    echo "FizzBuzz"
+  elif [ $((count % 3)) -eq 0 ]; then
+    echo "Fizz"
+  elif [ $((count % 5)) -eq 0 ]; then
+    echo "Buzz"
+  else
+    echo "$count"
+  fi
+  count=$((count + 1))
 done
 
