@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # Count and sort Apache log visitors by IP and HTTP status code
 
 awk '{print $1, $9}' apache-access.log | \
