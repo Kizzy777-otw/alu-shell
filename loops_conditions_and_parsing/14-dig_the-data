@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 # Count and sort Apache log visitors by IP and HTTP status code
 
-awk '{ips[$1" "$9]++} END {
-    for (key in ips) 
-        printf "%4d %s\n", ips[key], key
-}' apache-access.log | sort -nr
+awk '{print $1" "$9}' apache-access.log | sort | uniq -c | sort -nr | awk '{printf "%4d %s %s\n", $1, $2, $3}'
+
