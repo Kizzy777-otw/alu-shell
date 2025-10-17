@@ -1,0 +1,41 @@
+#!/usr/bin/env bash
+# Init script to manage the manage_my_process daemon
+
+PID_FILE="/var/run/my_process.pid"
+DAEMON="./manage_my_process"
+
+case "$1" in
+    start)
+        # Start the daemon
+        $DAEMON &
+        DAEMON_PID=$!
+        echo $DAEMON_PID > $PID_FILE
+        echo "manage_my_process started"
+        ;;
+    stop)
+        # Stop the daemon
+        if [ -f $PID_FILE ]; then
+            kill $(cat $PID_FILE) 2>/dev/null
+            rm -f $PID_FILE
+            echo "manage_my_process stopped"
+        else
+            echo "PID file not found. Is the process running?"
+        fi
+        ;;
+    restart)
+        # Restart the daemon
+        if [ -f $PID_FILE ]; then
+            kill $(cat $PID_FILE) 2>/dev/null
+            rm -f $PID_FILE
+        fi
+        $DAEMON &
+        DAEMON_PID=$!
+        echo $DAEMON_PID > $PID_FILE
+        echo "manage_my_process restarted"
+        ;;
+    *)
+        # Invalid argument
+        echo "Usage: manage_my_process {start|stop|restart}"
+        exit 1
+        ;;
+esac
