@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# Stop the 4-to_infinity_and_beyond process without using kill or killall
+
+# Find the process and terminate it by closing its stdin
+exec 3< <(pgrep -f "4-to_infinity_and_beyond")
+while read -r pid <&3; do
+    # Close the process's stdin to terminate it
+    : > "/proc/$pid/fd/0" 2>/dev/null
+done
+exec 3<&-
