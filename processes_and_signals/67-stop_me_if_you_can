@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# Kill the 7-highlander process instead of 4-to_infinity_and_beyond
+
+# Find and kill the 7-highlander process
+pkill -f "7-highlander"
